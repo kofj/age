@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"os"
 	"time"
@@ -18,9 +19,18 @@ var (
 
 	Bold = color.New(color.Bold).SprintFunc()
 	Cyan = color.New(color.FgCyan, color.Bold).SprintfFunc()
+
+	reset = flag.Bool("reset", false, "reset birthday.")
 )
 
 func main() {
+	flag.Parse()
+
+	// reset birthday
+	if *reset {
+		setBirtday()
+	}
+
 	getBirtday()
 	showAge()
 }
