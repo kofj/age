@@ -23,7 +23,6 @@ var (
 func main() {
 	getBirtday()
 	showAge()
-	fp.Close()
 }
 
 func getHomePath() string {
