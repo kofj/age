@@ -33,9 +33,9 @@ tmpbin="/tmp/age"
 
 echo $binary_url
 
-echo "Downloading cow binary $binary_url to $tmpbin.gz"
+echo "Downloading age binary $binary_url to $tmpbin.gz"
 curl -L "$binary_url" -o $tmpbin.gz || \
-    exit_on_fail "Downloading cow binary failed"
+    exit_on_fail "Downloading age binary failed"
 gzip -d $tmpbin.gz || exit_on_fail "gzip $tmpbin failed"
 chmod +x $tmpbin ||
     exit_on_fail "Can't chmod for $tmpbin"
@@ -48,4 +48,4 @@ else
     sudo mv $tmpbin $install_dir
 fi
 exit_on_fail "Failed to move $tmpbin to $install_dir"
-rm $tmpbin
+
