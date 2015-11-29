@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"os/signal"
 	"time"
 
 	"github.com/fatih/color"
@@ -21,10 +22,23 @@ var (
 	Cyan = color.New(color.FgCyan, color.Bold).SprintfFunc()
 
 	reset = flag.Bool("reset", false, "reset birthday.")
+
+	exit        bool
+	cleanupDone = make(chan bool)
+	signalChan  = make(chan os.Signal, 1)
 )
 
 func main() {
 	flag.Parse()
+
+	signal.Notify(signalChan, os.Interrupt)
+	go func() {
+		for range signalChan {
+			fmt.Println("\nReceived an interrupt, stopping services...")
+			exit = true
+			<-cleanupDone
+		}
+	}()
 
 	// reset birthday
 	if *reset {
@@ -67,6 +81,10 @@ func setBirtday() {
 
 func showAge() {
 	for {
+		if exit {
+			cleanupDone <- true
+			return
+		}
 		now = time.Now()
 		age = float64(now.UnixNano()-birthday.UnixNano()) / 1e9 / 86400 / 365
 		fmt.Printf("Time flies, you've been %s years old.\r", Cyan("%3.9f", age))
