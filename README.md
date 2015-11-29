@@ -6,13 +6,13 @@ Print your age in terminal, it is similar to [age in node.js](https://github.com
 
 ### Install
 
-**OS X, Linux (x86):**Run the following command (also for update)
+- **OS X, Linux (x86):**Run the following command (also for update)
 
 ``` shell
 curl -L git.io/age | bash
 ```
 
-**Windows**: [download](https://github.com/kofj/age/releases/)
+- **Windows**: [download](https://github.com/kofj/age/releases/)
 ## License
 
 MIT.
