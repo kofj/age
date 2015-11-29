@@ -11,6 +11,8 @@ Print your age in terminal, it is similar to [age in node.js](https://github.com
 ``` shell
 curl -L git.io/age | bash
 ```
+
+**Windows**: [download](https://github.com/kofj/age/releases/)
 ## License
 
 MIT.
