@@ -13,6 +13,13 @@ curl -L git.io/age | bash
 ```
 
 - **Windows**: [download](https://github.com/kofj/age/releases/)
+
+- If you are familiar with Google Go, you can install from source with following command.
+
+``` bash
+go get github.com/kofj/age
+```
+
 ## License
 
 MIT.
